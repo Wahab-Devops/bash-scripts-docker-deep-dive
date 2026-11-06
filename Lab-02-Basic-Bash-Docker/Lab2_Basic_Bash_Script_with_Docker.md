@@ -4,7 +4,7 @@
 
 In this lab I write a Bash script that talks to Docker: it pulls the official Nginx image and runs it as a container. This is my first step towards automating Docker with shell scripts.
 
-**Environment:** Ubuntu EC2 instance with Docker installed (see [Lab 1](../Lab-01-EC2-Docker/Lab1_Overview_of_EC2.md))
+**Environment:** Ubuntu EC2 instance with Docker installed (see [Lab 1](../Lab-01-EC2-Docker-Installation/Lab1_Overview_of_EC2.md))
 
 ---
 
