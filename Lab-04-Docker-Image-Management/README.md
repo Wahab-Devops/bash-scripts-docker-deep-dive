@@ -1,48 +1,65 @@
-# 🧹 Lab 4: Docker Image Management with Bash Loops
+# Lab 4 — Docker Image Management with Bash Loops
 
-![Bash](https://img.shields.io/badge/Bash-Script-4EAA25?logo=gnubash&logoColor=white)
+![Bash](https://img.shields.io/badge/Bash-Scripting-4EAA25?logo=gnubash&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-Images-2496ED?logo=docker&logoColor=white)
-![Level](https://img.shields.io/badge/Level-Beginner-blue)
 
-A Bash script that **lists all Docker images** and uses a **loop** to ask, image by image, whether to remove it.
+## Overview
 
-> **Author:** Abdul-Wahab · **Previous:** [Lab 3: Conditional Bash Scripts with Docker](../Lab-03-Conditional-Bash-Docker/)
+This lab uses a Bash loop to list local Docker images and prompt for a decision for each image. The script removes an image only when the response is exactly `yes`; other responses skip that image.
 
----
+## Objectives
 
-## 🎯 Objective
+1. List local Docker images.
+2. Format image information for line-by-line processing.
+3. Iterate over the image list with `while read`.
+4. Request interactive confirmation before image removal.
 
-| # | Task |
-|---|------|
-| 1 | Write a script that lists all Docker images |
-| 2 | Use a loop to remove each image interactively |
+## Files
 
-## 📁 Files
+| File | Purpose |
+|---|---|
+| [`docker_image_management.sh`](./docker_image_management.sh) | Lab implementation |
+| [`Lab4_Docker_Image_Management.md`](./Lab4_Docker_Image_Management.md) | Concepts, script walkthrough, example session, safety notes, and troubleshooting |
 
-| File | Description |
-|------|-------------|
-| [`Lab4_Docker_Image_Management.md`](Lab4_Docker_Image_Management.md) | Full write-up: concepts, script explanation, example session, troubleshooting |
-| [`docker_image_management.sh`](docker_image_management.sh) | The Bash script |
+## Prerequisites
 
-## 🚀 Quick Start
+- Bash and Docker Engine installed.
+- Docker daemon running.
+- An interactive terminal, because the script prompts for confirmation.
+- Permission to access the Docker daemon.
 
-**Requirement:** Docker installed (see Lab 1).
+See [Lab 1](../Lab-01-EC2-Docker-Installation/) for the Docker installation exercise.
+
+## Run
+
+For a controlled practice exercise, first pull disposable images:
+
+```bash
+docker pull hello-world
+docker pull alpine
+```
+
+Then run the script:
 
 ```bash
 chmod +x docker_image_management.sh
 ./docker_image_management.sh
 ```
 
-For each image, type `yes` to remove it or anything else to skip it.
+Review each image name and ID. Enter `yes` only when you intend to remove that image.
 
-## ⚠️ Warning
+## Safety
 
-`docker rmi` permanently removes images from the machine. Practice with small test images (`docker pull hello-world`, `docker pull alpine`) and be careful on production systems.
+This script removes local Docker images. An image may be needed by other containers or projects, and removing it can require downloading it again. Do not use this exercise on production hosts or remove images you cannot recreate.
 
-## 📚 What This Lab Covers
+## Concepts Practiced
 
-- `while read` loop over `docker images --format` output
-- Asking for user confirmation with `read -p` and `</dev/tty`
-- Removing images with `docker rmi`
-- Image management through Bash
+- Docker image listing and formatted command output.
+- Bash `while read` loops.
+- Interactive input using `read` and `/dev/tty`.
+- Image removal with `docker rmi`.
+- Explicit confirmation before a destructive action.
 
+## Detailed Guide
+
+See [Lab 4 — Docker Image Management](./Lab4_Docker_Image_Management.md).
