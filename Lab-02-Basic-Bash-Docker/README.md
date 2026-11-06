@@ -1,68 +1,67 @@
-# 🐳 Lab 2: Basic Bash Script with Docker
+# Lab 2 — Basic Bash and Docker
 
-![Bash](https://img.shields.io/badge/Bash-Script-4EAA25?logo=gnubash&logoColor=white)
+![Bash](https://img.shields.io/badge/Bash-Scripting-4EAA25?logo=gnubash&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-Nginx-2496ED?logo=docker&logoColor=white)
-![Level](https://img.shields.io/badge/Level-Beginner-blue)
 
-A Bash script that **pulls the official Nginx image** and **runs it as a container** on port 8080. This lab shows the basic way Bash and Docker work together.
+## Overview
 
-> **Author:** Abdul-Wahab · **Previous:** [Lab 1: EC2 and Docker Installation](../Lab-01-EC2-Docker/)
+This exercise uses a Bash script to pull the official Nginx image and start a container with host port `8080` mapped to container port `80`.
 
----
+## Objectives
 
-## 🎯 Objective
+1. Pull an image from Docker Hub using `docker pull`.
+2. Start a container in detached mode using `docker run -d`.
+3. Publish a container port to the host.
+4. Check the command result and verify that Nginx responds.
 
-| # | Task |
-|---|------|
-| 1 | Write a Bash script that pulls an Nginx Docker image |
-| 2 | Run a Docker container from that image using the script |
+## Files
 
-## 📁 Files
+| File | Purpose |
+|---|---|
+| [`lab2_script.sh`](./lab2_script.sh) | Lab implementation |
+| [`Lab2_Basic_Bash_Script_with_Docker.md`](./Lab2_Basic_Bash_Script_with_Docker.md) | Concepts, script walkthrough, verification, cleanup, and troubleshooting |
 
-| File | Description |
-|------|-------------|
-| [`Lab2_Basic_Bash_Script_with_Docker.md`](Lab2_Basic_Bash_Script_with_Docker.md) | Full write-up: concepts, script explanation, verification, troubleshooting |
-| [`lab2_script.sh`](lab2_script.sh) | The Bash script |
+## Prerequisites
 
-## 🚀 Quick Start
+- Bash and Docker Engine installed.
+- Docker daemon running.
+- Permission to access the Docker daemon.
+- Host port `8080` available.
 
-**Requirement:** Docker installed (see Lab 1).
+See [Lab 1](../Lab-01-EC2-Docker-Installation/) for the Docker installation exercise.
+
+## Run
 
 ```bash
 chmod +x lab2_script.sh
 ./lab2_script.sh
 ```
 
-Then check that Nginx is serving the page:
+## Verify
 
 ```bash
 docker ps
 curl http://localhost:8080
 ```
 
-## ✅ Expected Output
+The container should appear in `docker ps` with host port `8080` published to container port `80`. The HTTP request should return the Nginx welcome page.
 
-```
-Task 1: Pulling Nginx Docker image
-...
-Image pull successful: Nginx Docker image
-Task 2: Running Docker container
-<container id>
-Nginx container is running and accessible at http://localhost:8080
-Lab 2 tasks completed.
-```
+> **AWS EC2:** To access Nginx from outside the instance, configure an inbound Security Group rule for TCP port 8080 and browse to `http://<EC2-public-IP>:8080`. Restrict the source CIDR to trusted IP addresses rather than opening the port to everyone.
 
-## 🧹 Cleanup
+## Cleanup
 
 ```bash
 docker stop nginx-container
 docker rm nginx-container
 ```
 
-## 📚 What This Lab Covers
+## Concepts Practiced
 
-- Shebang and comments in a Bash script
-- Checking a command's exit code with `$?`
-- `docker pull`, `docker run -d` and port mapping (`-p 8080:80`)
-- Checking a running container with `docker ps | grep`
+- Bash shebangs, comments, and exit-status checks.
+- Docker image retrieval and detached container execution.
+- Host-to-container port mapping.
+- Basic container and HTTP verification.
 
+## Next Lab
+
+[Lab 3 — Conditional Bash and Docker](../Lab-03-Conditional-Bash-Docker/).
