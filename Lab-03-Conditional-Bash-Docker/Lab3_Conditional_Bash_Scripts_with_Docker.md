@@ -4,7 +4,7 @@
 
 In this lab I write a Bash script that makes a decision: it checks whether a Docker container is running, and if it is not, the script starts it. This uses an `if / else` condition together with Docker commands.
 
-**Environment:** Ubuntu EC2 instance with Docker installed (see [Lab 1](../Lab-01-EC2-Docker/Lab1_Overview_of_EC2.md))
+**Environment:** Ubuntu EC2 instance with Docker installed (see [Lab 1](../Lab-01-EC2-Docker-Installation/Lab1_Overview_of_EC2.md))
 
 ---
 
